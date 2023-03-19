@@ -181,4 +181,6 @@ Now when we click the button, React calls the function we passed to `onClick`. T
 
 Since the state is managed by React through the `useState` hook, we avoid the issue we had before, and we end up with a working counter.
 
+Also note that state is individual to the component. If we had two counters, they would each have their own state, and would not affect each other.
+
 This video explained the core concepts behind React. In React, we write components, which are functions that return a piece of JSX. We can pass data to these components through props. We can use `{}` brackets to embed JavaScript expressions in our JSX to make it change based on props or other values. We can use hooks to add different abilities to our components. This includes adding state through the `useState` hook. We can use the `useState` hook to store a piece of state in our component, and a function to update this state. When we update the state, React re-renders the component, and calls the function again.
