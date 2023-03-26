@@ -7,8 +7,9 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
-    "@motion-canvas/core": "^3.2.0",
-    "@motion-canvas/2d": "^3.2.0"
+    "@fontsource/jetbrains-mono": "^4.5.12",
+    "@motion-canvas/2d": "^3.2.0",
+    "@motion-canvas/core": "^3.2.0"
   },
   "devDependencies": {
     "@motion-canvas/ui": "^3.2.1",

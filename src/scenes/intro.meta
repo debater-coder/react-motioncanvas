@@ -1,0 +1,14 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "componentsStart",
+      "targetTime": 3.8052101161001577
+    },
+    {
+      "name": "componentsSay",
+      "targetTime": 7.152935656060439
+    }
+  ],
+  "seed": 182775919
+}
