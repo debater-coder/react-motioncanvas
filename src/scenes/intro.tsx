@@ -1,11 +1,48 @@
 import { makeScene2D } from "@motion-canvas/2d/lib/scenes";
-import { Circle, Rect, Txt } from "@motion-canvas/2d/lib/components";
+import {
+  Circle,
+  Layout,
+  NodeProps,
+  Rect,
+  Txt,
+} from "@motion-canvas/2d/lib/components";
 import { createRef, useDuration } from "@motion-canvas/core/lib/utils";
 import { all, waitUntil } from "@motion-canvas/core/lib/flow";
 import { Img } from "@motion-canvas/2d/lib/components";
 import reactLogo from "../../images/react-logo.png";
 import { linear } from "@motion-canvas/core/lib/tweening";
-import { Vector2 } from "@motion-canvas/core/lib/types";
+import {
+  ColorSignal,
+  PossibleColor,
+  Vector2,
+} from "@motion-canvas/core/lib/types";
+import { SignalValue, SimpleSignal } from "@motion-canvas/core/lib/signals";
+import { initial, signal, colorSignal } from "@motion-canvas/2d/lib/decorators";
+
+export interface ButtonProps extends NodeProps {
+  text: SignalValue<string>;
+}
+
+export class Button extends Rect {
+  @signal()
+  public declare readonly text: SimpleSignal<boolean, this>;
+
+  public constructor(props?: ButtonProps) {
+    super({
+      layout: true,
+      ...props,
+      fill: "#2f70ed",
+      radius: 30,
+      padding: 45,
+      opacity: 0,
+      justifyContent: "center",
+    });
+
+    this.add(
+      <Txt fontFamily={"JetBrains Mono"} text={props.text} fill={"white"} />
+    );
+  }
+}
 
 export default makeScene2D(function* (view) {
   const logoRef = createRef<Img>();
@@ -55,19 +92,7 @@ export default makeScene2D(function* (view) {
 
   const button = createRef<Rect>();
 
-  componentExamplesLayout().add(
-    <Rect
-      fill={"#2f70ed"}
-      radius={30}
-      layout
-      padding={45}
-      opacity={0}
-      ref={button}
-      justifyContent={"center"}
-    >
-      <Txt fontFamily={"JetBrains Mono"} text="Button" fill={"white"} />
-    </Rect>
-  );
+  componentExamplesLayout().add(<Button text="Button" ref={button} />);
 
   yield* button().opacity(1, 0.5);
 
