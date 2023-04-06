@@ -7,7 +7,15 @@
     },
     {
       "name": "componentsSay",
-      "targetTime": 7.152935656060439
+      "targetTime": 7.041765882004199
+    },
+    {
+      "name": "componentsExamples",
+      "targetTime": 11.061878077198715
+    },
+    {
+      "name": "componentsEnd",
+      "targetTime": 18.492252609796903
     }
   ],
   "seed": 182775919
