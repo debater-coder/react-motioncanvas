@@ -5,6 +5,7 @@ import { all, waitUntil } from "@motion-canvas/core/lib/flow";
 import { Img } from "@motion-canvas/2d/lib/components";
 import reactLogo from "../../images/react-logo.png";
 import { linear } from "@motion-canvas/core/lib/tweening";
+import { Vector2 } from "@motion-canvas/core/lib/types";
 
 export default makeScene2D(function* (view) {
   const logoRef = createRef<Img>();
@@ -62,6 +63,7 @@ export default makeScene2D(function* (view) {
       padding={45}
       opacity={0}
       ref={button}
+      justifyContent={"center"}
     >
       <Txt fontFamily={"JetBrains Mono"} text="Button" fill={"white"} />
     </Rect>
@@ -99,7 +101,7 @@ export default makeScene2D(function* (view) {
   const tabs = createRef<Rect>();
 
   componentExamplesLayout().add(
-    <Rect layout ref={tabs} gap={8}>
+    <Rect layout ref={tabs} gap={8} opacity={0}>
       <Rect fill={"#2f70ed"} radius={[30, 30, 8, 8]} layout padding={45}>
         <Txt fontFamily={"JetBrains Mono"} text="Tab 1" fill={"white"} />
       </Rect>
@@ -111,6 +113,36 @@ export default makeScene2D(function* (view) {
       </Rect>
     </Rect>
   );
+
+  yield* tabs().opacity(1, 0.5);
+
+  const ellipsis = createRef<Txt>();
+
+  componentExamplesLayout().add(
+    <Txt
+      fontFamily={"JetBrains Mono"}
+      text="Tab 1"
+      fill={"white"}
+      fontSize={100}
+      ref={ellipsis}
+      opacity={0}
+    >
+      ...
+    </Txt>
+  );
+
+  yield* ellipsis().opacity(1, 0.5);
+
+  yield* waitUntil("componentsReusable");
+
+  yield* all(
+    button().opacity(0, 0.5),
+    menu().opacity(0, 0.5),
+    tabs().opacity(0, 0.5),
+    ellipsis().opacity(0, 0.5)
+  );
+
+  componentExamplesLayout().remove();
 
   yield* waitUntil("componentsEnd");
 });

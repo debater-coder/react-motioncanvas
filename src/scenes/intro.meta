@@ -14,8 +14,12 @@
       "targetTime": 11.061878077198715
     },
     {
+      "name": "componentsReusable",
+      "targetTime": 16.04096347664775
+    },
+    {
       "name": "componentsEnd",
-      "targetTime": 18.492252609796903
+      "targetTime": 21.47133800924594
     }
   ],
   "seed": 182775919
